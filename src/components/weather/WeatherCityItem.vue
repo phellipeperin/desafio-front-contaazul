@@ -5,9 +5,17 @@
         </div>
         <div class="weather-city-content">
             <loading :condition="onLoading">
-                <h1>
-                    {{ weatherData }}
+                <h1
+                    v-if="!hasError"
+                    :class="[getTempColor]"
+                >
+                    <span>{{ weatherData.temp.toFixed(0).trim() }}</span>
+                    <span class="temp-unit">o</span>
                 </h1>
+                <error-container
+                    v-if="hasError"
+                    @reload="reload"
+                />
             </loading>
         </div>
         <div
@@ -27,10 +35,11 @@
     import weatherCachedStorage from '../../mixins/storage/weatherCachedStorage';
 
     import Loading from '../loading/Loading.vue';
+    import ErrorContainer from '../error/ErrorContainer.vue';
 
     export default {
         name: 'WeatherCityItem',
-        components: { Loading },
+        components: { Loading, ErrorContainer },
         mixins: [weatherApi, weatherCachedStorage],
         props: {
             cityName: { type: String, required: true },
@@ -43,11 +52,20 @@
                 hasError: false,
             };
         },
+        computed: {
+            getTempColor() {
+                if (this.weatherData.temp <= 5) return 'cold';
+                if (this.weatherData.temp <= 25 && this.weatherData.temp > 5) return 'warm';
+                if (this.weatherData.temp > 25) return 'hot';
+                return '';
+            },
+        },
         created() {
             const savedWeatherData = this.loadCityData(this.cityName);
             if (savedWeatherData) {
                 this.weatherData = savedWeatherData;
                 this.onLoading = false;
+                this.hasError = true;
             } else {
                 this.getWeatherDataFromApi();
             }
@@ -63,6 +81,10 @@
                     };
                     this.saveCityData(this.cityName, this.weatherData);
                     this.onLoading = false;
+                    this.hasError = false;
+                }).catch(() => {
+                    this.onLoading = false;
+                    this.hasError = true;
                 });
             },
             reload() {
@@ -95,19 +117,31 @@
 
         h4 {
             color: $color-main-text;
-            font-size: 1.3em;
+            font-size: 1.3rem;
             font-weight: 300;
         }
     }
 
     .weather-city-content {
+        position: relative;
         padding: 24px 8px;
         background-color: $color-card-background;
 
         h1 {
-            font-size: 5em;
+            font-size: 5rem;
             font-weight: 300;
             margin: 0;
+
+            &.cold { color: $color-temp-cold; }
+            &.warm { color: $color-temp-warm; }
+            &.hot{ color: $color-temp-hot; }
+        }
+
+        span.temp-unit {
+            position: absolute;
+            top: 32px;
+            font-size: 1.5rem;
+            font-weight: 600;
         }
     }
 
@@ -117,7 +151,7 @@
 
         p {
             color: $color-auxiliar-text;
-            font-size: 0.75em;
+            font-size: 0.75rem;
         }
 
         .updated-time {
