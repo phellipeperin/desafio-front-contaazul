@@ -1,7 +1,7 @@
 <template>
-    <div class="application-content">
+    <section class="application-content">
         <weather-city-list :city-list="cityList" />
-    </div>
+    </section>
 </template>
 
 <script>

@@ -1,11 +1,11 @@
 <template>
-    <div class="application-header">
+    <header class="application-header">
         <img
             alt="Logo"
             src="../../assets/img/logo.svg"
             class="logo"
         >
-    </div>
+    </header>
 </template>
 
 <script>

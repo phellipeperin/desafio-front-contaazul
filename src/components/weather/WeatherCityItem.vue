@@ -1,9 +1,9 @@
 <template>
     <div class="weather-city">
-        <div class="weather-city-header">
+        <header class="weather-city-header">
             <h4>{{ cityName }}</h4>
-        </div>
-        <div class="weather-city-content">
+        </header>
+        <article class="weather-city-content">
             <loading :condition="onLoading">
                 <h1
                     v-if="!hasError"
@@ -17,8 +17,8 @@
                     @reload="reload"
                 />
             </loading>
-        </div>
-        <div
+        </article>
+        <footer
             v-if="!onLoading && !hasError"
             class="weather-city-footer"
         >
@@ -49,7 +49,7 @@
                 Updated at
                 <span class="updated-time">{{ weatherData.updateTime | hour }}</span>
             </p>
-        </div>
+        </footer>
     </div>
 </template>
 
@@ -137,6 +137,7 @@
     }
 
     .weather-city-header {
+        text-align: center;
         padding: 12px 8px;
         border-bottom: 1px solid $color-divider;
 
@@ -144,10 +145,12 @@
             color: $color-main-text;
             font-size: 1.3rem;
             font-weight: 300;
+            margin: 0;
         }
     }
 
     .weather-city-content {
+        text-align: center;
         position: relative;
         padding: 24px 8px;
 
@@ -170,12 +173,14 @@
     }
 
     .weather-city-footer {
+        text-align: center;
         padding: 16px 8px;
         background-color: $color-card-footer-background;
 
         p {
             color: $color-auxiliar-text;
             font-size: 0.75rem;
+            margin: 0;
         }
 
         .updated-time {
@@ -188,10 +193,11 @@
 
             .extra-info-subtitle {
                 text-transform: uppercase;
-                margin-bottom: 4px;
+                margin: 0 0 4px;
             }
 
             .extra-info-data {
+                margin: 0;
                 color: $color-main-text;
             }
 
