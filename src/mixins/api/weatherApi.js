@@ -6,11 +6,12 @@ export default {
     data() {
         return {
             weatherBaseApiUrl: '/weather',
+            unit: 'metric',
         };
     },
     methods: {
         getCityWeather(city) {
-            return this.get(`${this.weatherBaseApiUrl}?q=${city.replace(/ /g, '')}`);
+            return this.get(`${this.weatherBaseApiUrl}?q=${city.replace(/ /g, '')}&units=${this.unit}`);
         },
     },
 };
