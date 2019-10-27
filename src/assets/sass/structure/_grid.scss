@@ -19,6 +19,7 @@ $grid-columns-quantity: 12;
     width: 100%;
     max-width: 1024px;
     margin: 0 auto;
+    padding: 8px 0;
 
     @media only screen and (max-width: $mobile-max-width) {
         & {

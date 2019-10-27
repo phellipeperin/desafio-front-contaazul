@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <div class="row">
+    <div class="container full-height">
+        <div class="row full-height">
             <div
                 v-for="city in cityList"
                 :key="city.name"
@@ -27,6 +27,13 @@
     };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    @media only screen and (min-width: $mobile-max-width) {
+        .city {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
 
 </style>

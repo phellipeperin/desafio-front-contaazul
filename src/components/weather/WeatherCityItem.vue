@@ -120,6 +120,7 @@
 <style scoped lang="scss">
     .weather-city {
         @include bow-shadow(2px, 2px, 5px, 0, $color-box-shadow);
+        width: 100%;
         max-width: 280px;
         margin: 0 auto;
         border-radius: 4px;

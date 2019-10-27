@@ -26,7 +26,7 @@
 <style scoped lang="scss">
     .application-content {
         height: calc(100% - #{$header-height});
-        padding: 8px 0;
+        padding: 0;
         overflow-x: hidden;
         overflow-y: auto;
         background-color: $color-background;
