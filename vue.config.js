@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+const webpack = require('webpack');
+
 module.exports = {
     chainWebpack: (config) => {
         const oneOfsMap = config.module.rule('scss').oneOfs.store;
@@ -17,4 +20,7 @@ module.exports = {
                 .end();
         });
     },
+    plugins: [
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    ],
 };

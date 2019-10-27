@@ -4,12 +4,20 @@
             <h4>{{ cityName }}</h4>
         </div>
         <div class="weather-city-content">
-            <h1>
-                -4º
-            </h1>
+            <loading :condition="onLoading">
+                <h1>
+                    {{ weatherData }}
+                </h1>
+            </loading>
         </div>
-        <div class="weather-city-footer">
-            <p>Updated at ____</p>
+        <div
+            v-if="!onLoading && !hasError"
+            class="weather-city-footer"
+        >
+            <p>
+                Updated at
+                <span class="updated-time">{{ weatherData.updateTime | date }}</span>
+            </p>
         </div>
     </div>
 </template>
@@ -18,8 +26,11 @@
     import weatherApi from '../../mixins/api/weatherApi';
     import weatherCachedStorage from '../../mixins/storage/weatherCachedStorage';
 
+    import Loading from '../loading/Loading.vue';
+
     export default {
         name: 'WeatherCityItem',
+        components: { Loading },
         mixins: [weatherApi, weatherCachedStorage],
         props: {
             cityName: { type: String, required: true },
@@ -29,13 +40,14 @@
             return {
                 weatherData: {},
                 onLoading: true,
+                hasError: false,
             };
         },
         created() {
             const savedWeatherData = this.loadCityData(this.cityName);
             if (savedWeatherData) {
                 this.weatherData = savedWeatherData;
-                this.onLoading = false;
+                // this.onLoading = false;
             } else {
                 this.getWeatherDataFromApi();
             }
@@ -104,6 +116,10 @@
         p {
             color: $color-auxiliar-text;
             font-size: 0.75em;
+        }
+
+        .updated-time {
+            text-transform: uppercase;
         }
     }
 </style>

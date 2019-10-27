@@ -13,7 +13,7 @@ export default {
             return this.loadCachedData(this.convertCityNameToCacheData(cityName));
         },
         convertCityNameToCacheData(cityName) {
-            return `${CITY_PREFIX}${cityName.substring(0, cityName.indexOf(','))}`;
+            return `${CITY_PREFIX}${cityName.substring(0, cityName.indexOf(',')).toLowerCase()}`;
         },
     },
 };
