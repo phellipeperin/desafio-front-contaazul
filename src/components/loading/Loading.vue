@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div v-if="condition">
+        <div v-if="!condition">
             <slot />
         </div>
-        <div v-if="!condition">
+        <div v-if="condition">
             <img
                 alt="Loading..."
                 src="../../assets/img/loader.svg"

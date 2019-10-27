@@ -20,7 +20,9 @@ module.exports = {
                 .end();
         });
     },
-    plugins: [
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    ],
+    configureWebpack: {
+        plugins: [
+            new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+        ],
+    },
 };

@@ -19,9 +19,8 @@ export default {
             if (loadedData) {
                 if (loadedData.expireAt && loadedData.expireAt > new Date().getTime()) {
                     return loadedData.data;
-                } else {
-                    this.clearData(name);
                 }
+                this.clearData(name);
             }
             return null;
         },

@@ -16,7 +16,7 @@
         >
             <p>
                 Updated at
-                <span class="updated-time">{{ weatherData.updateTime | date }}</span>
+                <span class="updated-time">{{ weatherData.updateTime | hour }}</span>
             </p>
         </div>
     </div>
@@ -47,10 +47,12 @@
             const savedWeatherData = this.loadCityData(this.cityName);
             if (savedWeatherData) {
                 this.weatherData = savedWeatherData;
-                // this.onLoading = false;
+                this.onLoading = false;
             } else {
                 this.getWeatherDataFromApi();
             }
+
+            setInterval(() => { this.getWeatherDataFromApi(); }, 10 * 60 * 1000);
         },
         methods: {
             getWeatherDataFromApi() {
