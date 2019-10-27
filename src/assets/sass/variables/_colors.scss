@@ -1,0 +1,20 @@
+$color-blue: #69A3FF;
+$color-orange: #69A3FF;
+$color-red: #69A3FF;
+
+$color-background: #F1F1F1;
+$color-header-background: #FFFFFF;
+$color-card-background: #FFFFFF;
+$color-card-footer-background: rgba($color-background, .5);
+$color-divider: #EBEBEB;
+$color-box-shadow: rgba(#333333, .1);
+
+$color-main-text: #737C84;
+$color-auxiliar-text: #B4B4B4;
+$color-error-text: $color-red;
+
+$color-primary-button: $color-main-text;
+
+$color-temp-cold: $color-blue;
+$color-temp-fine: $color-orange;
+$color-temp-hot: $color-red;

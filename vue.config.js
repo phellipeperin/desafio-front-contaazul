@@ -1,0 +1,19 @@
+module.exports = {
+    chainWebpack: (config) => {
+        const oneOfsMap = config.module.rule('scss').oneOfs.store;
+        oneOfsMap.forEach((item) => {
+            item
+                .use('sass-resources-loader')
+                .loader('sass-resources-loader')
+                .options({
+                    resources: [
+                        './src/assets/sass/mixins/_boxShadow.scss',
+                        './src/assets/sass/variables/_breakpoints.scss',
+                        './src/assets/sass/variables/_colors.scss',
+                        './src/assets/sass/variables/_header.scss',
+                    ],
+                })
+                .end();
+        });
+    },
+};
