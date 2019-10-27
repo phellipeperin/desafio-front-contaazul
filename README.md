@@ -15,7 +15,6 @@ npm install
 ```
 
 ### Compiles for development (hot-reloads)
-Run the following command and access the project on localhost:8080
 ```
 npm run serve
 ```
