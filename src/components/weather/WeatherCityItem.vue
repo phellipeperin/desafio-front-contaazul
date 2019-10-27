@@ -22,6 +22,29 @@
             v-if="!onLoading && !hasError"
             class="weather-city-footer"
         >
+            <div
+                v-if="showExtraInfo"
+                class="row extra-info"
+            >
+                <div class="col-6">
+                    <p class="extra-info-subtitle">
+                        Humidity
+                    </p>
+                    <p class="extra-info-data">
+                        <span class="extra-info-data-value">{{ weatherData.humidity }}</span>
+                        <span>%</span>
+                    </p>
+                </div>
+                <div class="col-6">
+                    <p class="extra-info-subtitle">
+                        Pressure
+                    </p>
+                    <p class="extra-info-data">
+                        <span class="extra-info-data-value">{{ weatherData.pressure }}</span>
+                        <span>hPa</span>
+                    </p>
+                </div>
+            </div>
             <p>
                 Updated at
                 <span class="updated-time">{{ weatherData.updateTime | hour }}</span>
@@ -65,7 +88,6 @@
             if (savedWeatherData) {
                 this.weatherData = savedWeatherData;
                 this.onLoading = false;
-                this.hasError = true;
             } else {
                 this.getWeatherDataFromApi();
             }
@@ -100,6 +122,8 @@
         @include bow-shadow(2px, 2px, 5px, 0, $color-box-shadow);
         max-width: 280px;
         margin: 0 auto;
+        border-radius: 4px;
+        background-color: $color-card-background;
 
         div[class^="weather-city-"] {
             box-sizing: border-box;
@@ -113,7 +137,7 @@
 
     .weather-city-header {
         padding: 12px 8px;
-        background-color: $color-card-background;
+        border-bottom: 1px solid $color-divider;
 
         h4 {
             color: $color-main-text;
@@ -125,7 +149,6 @@
     .weather-city-content {
         position: relative;
         padding: 24px 8px;
-        background-color: $color-card-background;
 
         h1 {
             font-size: 5rem;
@@ -156,6 +179,24 @@
 
         .updated-time {
             text-transform: uppercase;
+        }
+
+        .extra-info {
+            text-align: center;
+            margin-bottom: 16px;
+
+            .extra-info-subtitle {
+                text-transform: uppercase;
+                margin-bottom: 4px;
+            }
+
+            .extra-info-data {
+                color: $color-main-text;
+            }
+
+            .extra-info-data-value {
+                font-size: 1.3rem;
+            }
         }
     }
 </style>
