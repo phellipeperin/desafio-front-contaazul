@@ -5,6 +5,8 @@
 </template>
 
 <script>
+    import cityList from '../../assets/js/cityList';
+
     import WeatherCityList from '../weather/WeatherCityList.vue';
 
     export default {
@@ -12,12 +14,11 @@
         components: { WeatherCityList },
         data() {
             return {
-                cityList: [
-                    'Nuuk/GL',
-                    'Urubici/BR',
-                    'Nairobi/KE',
-                ],
+                cityList: [],
             };
+        },
+        created() {
+            this.cityList = cityList;
         },
     };
 </script>

@@ -19,6 +19,7 @@
         name: 'WeatherCityItem',
         props: {
             city: { type: String, required: true },
+            showExtraInfo: { type: Boolean, default: false },
         },
     };
 </script>

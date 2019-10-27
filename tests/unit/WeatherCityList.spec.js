@@ -4,13 +4,13 @@ import WeatherCityList from '@/components/weather/WeatherCityList.vue';
 describe('WeatherCityList', () => {
     const wrapper = mount(WeatherCityList, {
         cityList: [
-            'Nuuk/GL',
-            'Urubici/BR',
-            'Nairobi/KE',
+            { id: 1 },
+            { id: 2 },
+            { id: 3 },
         ],
     });
 
     it('renders all city columns', () => {
-        expect(wrapper.findAll('.col').length).toEqual(3);
+        expect(wrapper.findAll('.city').length).toEqual(3);
     });
 });

@@ -4,7 +4,7 @@
             <div
                 v-for="city in cityList"
                 :key="city"
-                class="col-4 col-mobile-12"
+                class="city col-4 col-mobile-12"
             >
                 <weather-city-item :city="city" />
             </div>
