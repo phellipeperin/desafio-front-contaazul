@@ -4,9 +4,9 @@ import WeatherCityList from '@/components/weather/WeatherCityList.vue';
 describe('WeatherCityList', () => {
     const wrapper = mount(WeatherCityList, {
         cityList: [
-            { id: 1 },
-            { id: 2 },
-            { id: 3 },
+            { name: 'A City' },
+            { name: 'B City' },
+            { name: 'C City' },
         ],
     });
 
