@@ -1,9 +1,9 @@
 <template>
-    <div class="flex-grid">
+    <div class="row">
         <div
             v-for="city in cityList"
             :key="city"
-            class="col"
+            class="col-4 col-mobile-12"
         >
             <weather-city-item :city="city" />
         </div>

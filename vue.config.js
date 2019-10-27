@@ -11,6 +11,7 @@ module.exports = {
                         './src/assets/sass/variables/_breakpoints.scss',
                         './src/assets/sass/variables/_colors.scss',
                         './src/assets/sass/variables/_header.scss',
+                        './src/assets/sass/structure/_grid.scss',
                     ],
                 })
                 .end();
