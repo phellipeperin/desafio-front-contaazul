@@ -1,40 +1,64 @@
-$grid-columns-gutter: 10px;
+$grid-columns-gutter: 20px;
 $grid-columns-quantity: 12;
 
-@mixin column($proportion) {
-    flex-basis: calc((100% / #{$grid-columns-quantity / $proportion}) - (2 * #{$proportion} * #{$grid-columns-gutter}));
+@mixin column($proportion, $gutter) {
+    flex-basis: calc((100% / #{$grid-columns-quantity / $proportion}) - (2 * #{$gutter}));
+}
+
+@mixin column-desktop($proportion) {
+    @include column($proportion, $grid-columns-gutter);
+}
+
+@mixin column-mobile($proportion) {
+    @include column($proportion, $grid-columns-gutter);
+    margin: $grid-columns-gutter;
+}
+
+.container {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+
+    @media only screen and (max-width: $mobile-max-width) {
+        & {
+            padding: 0 12px;
+        }
+    }
 }
 
 .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
 
-    .col-1 { @include column(1); }
-    .col-2 { @include column(2); }
-    .col-3 { @include column(3); }
-    .col-4 { @include column(4); }
-    .col-5 { @include column(5); }
-    .col-6 { @include column(6); }
-    .col-7 { @include column(7); }
-    .col-8 { @include column(8); }
-    .col-9 { @include column(9); }
-    .col-10 { @include column(10); }
-    .col-11 { @include column(11); }
-    .col-12 { @include column(12); }
+    .col-1 { @include column-desktop(1); }
+    .col-2 { @include column-desktop(2); }
+    .col-3 { @include column-desktop(3); }
+    .col-4 { @include column-desktop(4); }
+    .col-5 { @include column-desktop(5); }
+    .col-6 { @include column-desktop(6); }
+    .col-7 { @include column-desktop(7); }
+    .col-8 { @include column-desktop(8); }
+    .col-9 { @include column-desktop(9); }
+    .col-10 { @include column-desktop(10); }
+    .col-11 { @include column-desktop(11); }
+    .col-12 { @include column-desktop(12); }
 
     @media only screen and (max-width: $mobile-max-width) {
-        .col-mobile-1 { @include column(1); }
-        .col-mobile-2 { @include column(2); }
-        .col-mobile-3 { @include column(3); }
-        .col-mobile-4 { @include column(4); }
-        .col-mobile-5 { @include column(5); }
-        .col-mobile-6 { @include column(6); }
-        .col-mobile-7 { @include column(7); }
-        .col-mobile-8 { @include column(8); }
-        .col-mobile-9 { @include column(9); }
-        .col-mobile-10 { @include column(10); }
-        .col-mobile-11 { @include column(11); }
-        .col-mobile-12 { @include column(12); }
+        .col-mobile-1 { @include column-mobile(1); }
+        .col-mobile-2 { @include column-mobile(2); }
+        .col-mobile-3 { @include column-mobile(3); }
+        .col-mobile-4 { @include column-mobile(4); }
+        .col-mobile-5 { @include column-mobile(5); }
+        .col-mobile-6 { @include column-mobile(6); }
+        .col-mobile-7 { @include column-mobile(7); }
+        .col-mobile-8 { @include column-mobile(8); }
+        .col-mobile-9 { @include column-mobile(9); }
+        .col-mobile-10 { @include column-mobile(10); }
+        .col-mobile-11 { @include column-mobile(11); }
+        .col-mobile-12 { @include column-mobile(12); }
     }
 }

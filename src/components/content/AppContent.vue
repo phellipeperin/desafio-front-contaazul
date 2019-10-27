@@ -1,8 +1,6 @@
 <template>
     <div class="application-content">
-        <div class="content-container">
-            <weather-city-list :city-list="cityList" />
-        </div>
+        <weather-city-list :city-list="cityList" />
     </div>
 </template>
 
@@ -31,11 +29,5 @@
         overflow-x: hidden;
         overflow-y: auto;
         background-color: $color-background;
-
-        .content-container {
-            width: 100%;
-            max-width: 1024px;
-            margin: 0 auto;
-        }
     }
 </style>

@@ -26,6 +26,8 @@
 <style scoped lang="scss">
     .weather-city {
         @include bow-shadow(2px, 2px, 5px, 0, $color-box-shadow);
+        max-width: 280px;
+        margin: 0 auto;
 
         div[class^="weather-city-"] {
             box-sizing: border-box;
