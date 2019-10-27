@@ -1,5 +1,5 @@
 export default [
-    { id: '', name: 'Nuuk, GL', extraInfo: false },
-    { id: '', name: 'Urubici/BR', extraInfo: true },
-    { id: '', name: 'Nairobi/KE', extraInfo: false },
+    { name: 'Nuuk, GL', extraInfo: false },
+    { name: 'Urubici, BR', extraInfo: true },
+    { name: 'Nairobi, KE', extraInfo: false },
 ];

@@ -3,10 +3,13 @@
         <div class="row">
             <div
                 v-for="city in cityList"
-                :key="city"
+                :key="city.name"
                 class="city col-4 col-mobile-12"
             >
-                <weather-city-item :city="city" />
+                <weather-city-item
+                    :show-extra-info="city.extraInfo"
+                    :city-name="city.name"
+                />
             </div>
         </div>
     </div>
