@@ -40,12 +40,14 @@
             border-radius: 28px;
             color: $color-primary-button;
             background-color: transparent;
+            @include btn-transition();
 
             &:focus,
             &:hover {
                 background-color: $color-primary-button;
                 color: white;
                 cursor: pointer;
+                @include btn-transition();
             }
         }
     }

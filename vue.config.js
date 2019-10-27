@@ -11,6 +11,7 @@ module.exports = {
                 .options({
                     resources: [
                         './src/assets/sass/mixins/_boxShadow.scss',
+                        './src/assets/sass/mixins/_transition.scss',
                         './src/assets/sass/variables/_breakpoints.scss',
                         './src/assets/sass/variables/_colors.scss',
                         './src/assets/sass/variables/_header.scss',

@@ -1,0 +1,12 @@
+@mixin transition($transition...) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -ms-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+}
+
+@mixin btn-transition() {
+    @include transition(color ease 0.2s);
+    @include transition(background-color ease 0.2s);
+}
