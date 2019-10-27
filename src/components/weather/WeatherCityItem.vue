@@ -6,14 +6,14 @@
         <article class="weather-city-content">
             <loading :condition="onLoading">
                 <h1
-                    v-if="!hasError"
+                    v-if="!hasError && weatherData.temp"
                     :class="[getTempColor]"
                 >
-                    <span>{{ weatherData.temp.toFixed(0).trim() }}</span>
+                    <span class="temp-value">{{ weatherData.temp.toFixed(0).trim() }}</span>
                     <span class="temp-unit">o</span>
                 </h1>
                 <error-container
-                    v-if="hasError"
+                    v-if="hasError || !weatherData.temp"
                     @reload="reload"
                 />
             </loading>
